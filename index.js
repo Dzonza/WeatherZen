@@ -8,7 +8,7 @@ app.set("view engine", "ejs");
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
-const API_KEY = "";
+const API_KEY = process.env.API_KEY;
 
 let data = [];
 let lat;
