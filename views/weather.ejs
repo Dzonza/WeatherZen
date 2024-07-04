@@ -118,12 +118,13 @@
   document.addEventListener('DOMContentLoaded', function () {
     const body = document.body;
     const footer = document.querySelector('footer');
-
-    if (window.innerWidth <= 450) {
-      body.style.height = '100%';
-      footer.style.position = 'static';
-    }
-
+    const applyStyles = function () {
+      if (window.innerWidth <= 450) {
+        body.style.height = '100%';
+        footer.style.position = 'static';
+      }
+    };
+    applyStyles();
     window.addEventListener('resize', applyStyles);
   });
 </script>
