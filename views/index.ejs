@@ -1,0 +1,14 @@
+<%- include ("partials/header.ejs") %>
+<div class="container">
+  <form action="/search" class="search-bar" method="POST" autocomplete="off">
+    <input type="text" placeholder="Enter a City" name="search" />
+    <button type="submit">
+      <img src="images/search.png" alt="search icon" />
+    </button>
+  </form>
+  <% if (locals.error) { %>
+  <div class="error">
+    <p><%= error %></p>
+  </div>
+</div>
+<% } %> <%- include ("partials/footer.ejs") %>

@@ -1,0 +1,130 @@
+<%- include ("partials/header.ejs") %>
+<div class="container">
+  <form action="/search" class="search-bar" method="POST" autocomplete="off">
+    <input type="text" placeholder="Enter a City" name="search" />
+    <button type="submit">
+      <img src="images/search.png" alt="search icon" />
+    </button>
+  </form>
+  <% if (locals.error) { %>
+  <div class="error">
+    <p><%= error %></p>
+  </div>
+  <% } %>
+
+  <div class="containerWeather">
+    <div class="city">
+      <h2><%= data[0].name %>, <%= data[0].country %></h2>
+      <p><%= time %></p>
+    </div>
+    <div class="weatherDetails">
+      <div class="icon">
+        <img src="<%= image %>" alt="<%= content.weather[0].main%>" />
+        <div>
+          <h1><%= Math.round(content.main.temp) %>°C</h1>
+          <h3><%= content.weather[0].description %></h3>
+        </div>
+      </div>
+      <div class="temp">
+        <div class="tempCard">
+          <h3><%= content.main.pressure %> hPa</h3>
+          <p>Pressure</p>
+        </div>
+        <div class="tempCard">
+          <h3><%= content.wind.speed %> mph</h3>
+          <p>Wind</p>
+        </div>
+        <div class="tempCard">
+          <h3><%= content.weather[0].main %></h3>
+          <p>Weather</p>
+        </div>
+        <div class="tempCard">
+          <h3><%= content.clouds.all %>%</h3>
+          <p>Clouds</p>
+        </div>
+        <div class="tempCard">
+          <h3><%= content.visibility /1000 %> km</h3>
+          <p>Visibility</p>
+        </div>
+        <div class="tempCard">
+          <h3><%= content.main.humidity %>%</h3>
+          <p>Humidity</p>
+        </div>
+      </div>
+      <div class="otherDetails">
+        <div class="other">
+          <h2><%= Math.round(content.main.temp_max) %>°C</h2>
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18"
+              fill="currentColor"
+              class="bi bi-thermometer-high"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M9.5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585a1.5 1.5 0 0 1 1 1.415"
+              />
+              <path
+                d="M5.5 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM8 1a1.5 1.5 0 0 0-1.5 1.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0l-.166-.15V2.5A1.5 1.5 0 0 0 8 1"
+              />
+            </svg>
+            Max Temp
+          </p>
+        </div>
+        <div class="other">
+          <h2><%= Math.round(content.main.temp_min) %>°C</h2>
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18"
+              fill="currentColor"
+              class="bi bi-thermometer"
+              viewBox="0 0 16 16"
+            >
+              <path d="M8 14a1.5 1.5 0 1 0 0-3 1.5 1.5 0 0 0 0 3" />
+              <path
+                d="M8 0a2.5 2.5 0 0 0-2.5 2.5v7.55a3.5 3.5 0 1 0 5 0V2.5A2.5 2.5 0 0 0 8 0M6.5 2.5a1.5 1.5 0 1 1 3 0v7.987l.167.15a2.5 2.5 0 1 1-3.333 0l.166-.15z"
+              />
+            </svg>
+            Min Temp
+          </p>
+        </div>
+        <div class="other">
+          <h2><%= Math.round(content.main.feels_like) %>°C</h2>
+          <p>
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              height="18"
+              fill="currentColor"
+              class="bi bi-thermometer-sun"
+              viewBox="0 0 16 16"
+            >
+              <path
+                d="M5 12.5a1.5 1.5 0 1 1-2-1.415V2.5a.5.5 0 0 1 1 0v8.585A1.5 1.5 0 0 1 5 12.5"
+              />
+              <path
+                d="M1 2.5a2.5 2.5 0 0 1 5 0v7.55a3.5 3.5 0 1 1-5 0zM3.5 1A1.5 1.5 0 0 0 2 2.5v7.987l-.167.15a2.5 2.5 0 1 0 3.333 0L5 10.486V2.5A1.5 1.5 0 0 0 3.5 1m5 1a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5m4.243 1.757a.5.5 0 0 1 0 .707l-.707.708a.5.5 0 1 1-.708-.708l.708-.707a.5.5 0 0 1 .707 0M8 5.5a.5.5 0 0 1 .5-.5 3 3 0 1 1 0 6 .5.5 0 0 1 0-1 2 2 0 0 0 0-4 .5.5 0 0 1-.5-.5M12.5 8a.5.5 0 0 1 .5-.5h1a.5.5 0 1 1 0 1h-1a.5.5 0 0 1-.5-.5m-1.172 2.828a.5.5 0 0 1 .708 0l.707.708a.5.5 0 0 1-.707.707l-.708-.707a.5.5 0 0 1 0-.708M8.5 12a.5.5 0 0 1 .5.5v1a.5.5 0 0 1-1 0v-1a.5.5 0 0 1 .5-.5"
+              />
+            </svg>
+            Feels like
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const body = document.body;
+    const footer = document.querySelector('footer');
+
+    if (window.innerWidth <= 450) {
+      body.style.height = '100%';
+      footer.style.position = 'static';
+    }
+
+    window.addEventListener('resize', applyStyles);
+  });
+</script>
+<%-include("partials/footer.ejs") %>
