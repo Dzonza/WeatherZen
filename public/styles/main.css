@@ -43,8 +43,8 @@ h2 a {
 }
 
 .container {
-  padding: 5%;
-  padding-bottom: 0;
+  padding: 2%;
+  margin: 50px 0;
   height: 60%;
   display: flex;
   align-items: center;
@@ -221,6 +221,7 @@ footer {
   font-weight: 500;
   color: rgb(24, 24, 24);
 }
+
 @media (max-width: 900px) {
   .weatherDetails {
     gap: 20px;
@@ -242,6 +243,14 @@ footer {
     padding-top: 20px;
   }
 }
+@media (min-width: 2600px) {
+  body {
+    padding: 0 20%;
+  }
+  footer {
+    width: 60%;
+  }
+}
 @media (max-width: 500px) {
   nav {
     flex-direction: column;
@@ -251,9 +260,6 @@ footer {
   }
   .navigation {
     padding: 0;
-  }
-  .container {
-    height: auto;
   }
 
   .containerWeather {
