@@ -10,5 +10,18 @@
   <div class="error">
     <p><%= error %></p>
   </div>
+  <% } %>
 </div>
-<% } %> <%- include ("partials/footer.ejs") %>
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    const container = document.querySelector('.container');
+    const containerPadding = function () {
+      if (window.innerWidth <= 2000) {
+        container.style.paddingTop = '0';
+      }
+    };
+    containerPadding();
+    window.addEventListener('resize', containerPadding);
+  });
+</script>
+<%- include ("partials/footer.ejs") %>
