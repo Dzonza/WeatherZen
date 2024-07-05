@@ -221,7 +221,20 @@ footer {
   font-weight: 500;
   color: rgb(24, 24, 24);
 }
-
+@media (min-width: 2600px) {
+  body {
+    padding: 0 20%;
+  }
+  footer {
+    width: 60%;
+  }
+}
+@media (max-width: 1600px) {
+  .containerWeather,
+  .search-bar {
+    scale: 0.9;
+  }
+}
 @media (max-width: 900px) {
   .weatherDetails {
     gap: 20px;
@@ -246,14 +259,7 @@ footer {
     padding-top: 20px;
   }
 }
-@media (min-width: 2600px) {
-  body {
-    padding: 0 20%;
-  }
-  footer {
-    width: 60%;
-  }
-}
+
 @media (max-width: 500px) {
   nav {
     flex-direction: column;
@@ -264,8 +270,9 @@ footer {
     padding: 0;
   }
 
-  .containerWeather {
-    scale: 0.9;
+  .containerWeather,
+  .search-bar {
+    scale: 0.8;
   }
   .search-bar {
     display: flex;

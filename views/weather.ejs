@@ -122,6 +122,9 @@
       if (window.innerWidth <= 550) {
         body.style.height = '100%';
         footer.style.position = 'static';
+      } else {
+        body.style.height = '';
+        footer.style.position = '';
       }
     };
     applyStyles();
